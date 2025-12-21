@@ -6,17 +6,21 @@
     
     <title>MedStat | Free Medical Statistics Tool | Firth Logistic, PSM, Survival Analysis</title>
     <meta name="title" content="MedStat | Free Medical Statistics Tool for Researchers">
-    <meta name="description" content="MedStat: A professional, free web-based medical statistics tool. Analyze clinical data with Firth Logistic Regression, Propensity Score Matching (PSM), Survival Analysis, Kaplan-Meier, and Cox Regression. Designed for medical researchers and clinicians.">
-    
-    <meta name="keywords" content="medical statistics, clinical research tool, free statistical software, Firth Logistic Regression, Propensity Score Matching, PSM, Survival Analysis, Kaplan-Meier, Cox Regression, medical data analysis, biostatistics tool, MedStat, online statistics calculator">
+    <meta name="description" content="MedStat is a professional, free web-based medical statistics tool. Perform Firth Logistic Regression, Propensity Score Matching (PSM), Survival Analysis, Kaplan-Meier, and Cox Regression online. Designed for clinical researchers and healthcare professionals worldwide. No data storage, fully secure.">
+    <meta name="keywords" content="medical statistics, clinical research tool, free statistical software, Firth Logistic Regression, Propensity Score Matching, PSM, Survival Analysis, Kaplan-Meier, Cox Regression, biostatistics tool, online statistics calculator, medical data analysis, open source medical statistics, research data tool">
     
     <link rel="canonical" href="https://medstat.app" />
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://medstat.app">
-    <meta property="og:title" content="MedStat | Professional Medical Statistics Tool">
-    <meta property="og:description" content="Free, secure, and professional medical statistics analysis. Firth Logistic, PSM, and more. No data storage.">
+    <meta property="og:title" content="MedStat | Professional Medical Statistics & Research Tool">
+    <meta property="og:description" content="Empowering medical research with professional-grade statistical analysis. Free to use, secure, and no installation required.">
     <meta property="og:image" content="https://huggingface.co/front/assets/huggingface_logo.svg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://medstat.app">
+    <meta property="twitter:title" content="MedStat | Free Clinical Statistics Tool">
+    <meta property="twitter:description" content="The ultimate free tool for Firth Logistic, PSM, and Survival Analysis.">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -25,26 +29,35 @@
 
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background-color: #FFFFFF;
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            overflow: hidden; background-color: #FFFFFF;
             -webkit-overflow-scrolling: touch;
         }
         #app-container {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+            display: block; width: 100%; height: 100%; border: none;
+            position: fixed; top: 0; left: 0; z-index: 2; /* ทับเนื้อหา SEO */
+        }
+        /* ส่วนสำหรับหลอก Bot ให้เจอเนื้อหาคุณภาพ แต่ไม่กวนตา User */
+        .seo-content {
+            position: absolute; top: 0; left: 0; width: 1px; height: 1px;
+            overflow: hidden; color: transparent; z-index: 1;
         }
     </style>
 </head>
 <body>
+
+    <div class="seo-content">
+        <h1>MedStat: Professional Medical Statistics Tool</h1>
+        <p>MedStat is a comprehensive, free-to-use medical statistics platform designed for researchers, clinicians, and biostatisticians. Our tool provides advanced analytical capabilities without the need for expensive software licenses.</p>
+        <h2>Key Statistical Features:</h2>
+        <ul>
+            <li><strong>Firth Logistic Regression:</strong> Handle small sample sizes and complete separation in clinical data.</li>
+            <li><strong>Propensity Score Matching (PSM):</strong> Reduce bias in observational studies for better causal inference.</li>
+            <li><strong>Survival Analysis:</strong> Professional Kaplan-Meier plotting and Cox Proportional Hazards Regression.</li>
+            <li><strong>Biostatistics Dashboard:</strong> User-friendly interface for complex medical data analysis.</li>
+        </ul>
+        <p>Designed for medical researchers worldwide. Fully secure, web-based, and no data is stored on our servers.</p>
+    </div>
 
     <iframe 
         id="app-container"
