@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>MedStat Methods | Statistical Methods Documentation | Medical Research</title>
+    <meta name="description" content="Detailed documentation of statistical methods in MedStat: Firth Logistic Regression, Propensity Score Matching, Survival Analysis, Kaplan-Meier, Cox Regression. Learn methodology, assumptions, and applications in medical research.">
+    <meta name="keywords" content="statistical methods, Firth Logistic Regression, Propensity Score Matching, survival analysis, Kaplan-Meier, Cox regression, biostatistics methods, medical research methods, clinical statistics">
+    <meta name="author" content="MedStat Team">
+    
+    <meta name="canonical" href="https://medstat.app/methods">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://medstat.app/methods">
+    <meta property="og:title" content="MedStat Methods | Statistical Methods Documentation">
+    <meta property="og:description" content="Comprehensive documentation of advanced statistical methods for medical research and clinical data analysis.">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Statistical Methods in MedStat">
+    <meta property="twitter:description" content="Learn about Firth Logistic Regression, PSM, and Survival Analysis methodologies.">
+    
+    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
+    <link rel="canonical" href="https://medstat.app/methods">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; background: white; min-height: 100vh; }
+        h1 { font-size: 2.5em; margin: 30px 0 20px; color: #1565c0; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        h2 { font-size: 2em; margin: 25px 0 15px; color: #1976d2; }
+        h3 { font-size: 1.5em; margin: 20px 0 10px; color: #1976d2; }
+        p { margin: 15px 0; text-align: justify; }
+        ul, ol { margin: 15px 0 15px 40px; }
+        li { margin: 10px 0; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; color: #c41c3b; }
+        .code-block { background: #f0f0f0; padding: 15px; border-left: 4px solid #1565c0; margin: 15px 0; overflow-x: auto; border-radius: 5px; }
+        a { color: #1565c0; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .nav { background: #f0f0f0; padding: 20px; border-radius: 5px; margin: 20px 0; }
+        .nav a { margin-right: 20px; display: inline-block; margin-bottom: 10px; }
+        .method-card { background: #e3f2fd; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #1565c0; }
+        .eq { background: #f9f9f9; padding: 15px; margin: 15px 0; border-left: 3px solid #1976d2; font-style: italic; font-family: 'Times New Roman', serif; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #1565c0; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .breadcrumb { font-size: 0.9em; color: #666; margin: 20px 0; }
+        .back-link { display: inline-block; margin: 20px 0; padding: 10px 20px; background: #1565c0; color: white; border-radius: 5px; text-decoration: none; }
+        .back-link:hover { background: #0d47a1; }
+        .assumption-box { background: #fff3e0; padding: 15px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #ff9800; }
+        .pro-box { background: #e8f5e9; padding: 15px; border-radius: 5px; margin: 10px 0; border-left: 4px solid #4caf50; }
+        .con-box { background: #ffebee; padding: 15px; border-radius: 5px; margin: 10px 0; border-left: 4px solid #f44336; }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "MedStat Methods | Statistical Methods Documentation",
+      "description": "Comprehensive documentation of advanced statistical methods for medical research",
+      "image": "https://medstat.app/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MedStat Team"
+      },
+      "datePublished": "2025-12-21",
+      "dateModified": "2025-12-21"
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="https://medstat.app">Home</a> > <a href="https://medstat.app/guide">Guide</a> > Methods</div>
+        
+        <h1>MedStat Statistical Methods Documentation</h1>
+        
+        <p>This document provides comprehensive technical documentation of all statistical methods available in MedStat. Each section covers methodology, assumptions, applications, and interpretation guidelines for advanced medical statistics analysis.</p>
+        
+        <div class="nav">
+            <strong>Quick Navigation:</strong>
+            <a href="#firth">Firth Logistic</a>
+            <a href="#psm">Propensity Score</a>
+            <a href="#kaplan">Kaplan-Meier</a>
+            <a href="#cox">Cox Regression</a>
+            <a href="#references">References</a>
+        </div>
+        
+        <!-- FIRTH LOGISTIC REGRESSION -->
+        <h2 id="firth">1. Firth Logistic Regression</h2>
+        
+        <div class="method-card">
+            <h3>Overview</h3>
+            <p>Firth Logistic Regression is a penalized logistic regression method developed by David Firth (1993) that provides improved inference for binary logistic regression, particularly in small samples and in the presence of complete separation.</p>
+        </div>
+        
+        <h3>Mathematical Framework</h3>
+        <p>Standard logistic regression models the probability of a binary outcome:</p>
+        <div class="eq">
+            P(Y=1|X) = exp(Xβ) / (1 + exp(Xβ))
+        </div>
+        
+        <p>Firth's approach adds a penalty term to the likelihood function to correct for bias in the maximum likelihood estimator:</p>
+        <div class="eq">
+            L*(Xβ) = L(Xβ) + 0.5 * log(|I(β)|)
+        </div>
+        <p>where I(β) is the Fisher Information matrix.</p>
+        
+        <h3>Key Advantages</h3>
+        <div class="pro-box">
+            <strong>✓ Handles small samples:</strong> Provides reliable estimates with limited data
+        </div>
+        <div class="pro-box">
+            <strong>✓ Complete separation:</strong> Addresses situations where outcome is perfectly separated by predictors
+        </div>
+        <div class="pro-box">
+            <strong>✓ Reduced bias:</strong> Penalized likelihood reduces bias in coefficient estimates
+        </div>
+        <div class="pro-box">
+            <strong>✓ Confidence intervals:</strong> Always computable, unlike standard logistic regression
+        </div>
+        
+        <h3>Limitations</h3>
+        <div class="con-box">
+            <strong>✗ Computational complexity:</strong> More computationally intensive than standard logistic regression
+        </div>
+        <div class="con-box">
+            <strong>✗ Interpretation:</strong> Coefficients represent conditional effects, not marginal effects
+        </div>
+        
+        <h3>Assumptions</h3>
+        <div class="assumption-box">
+            <ul>
+                <li>Binary outcome variable (0/1)</li>
+                <li>Independence of observations</li>
+                <li>No multicollinearity among predictors</li>
+                <li>Correct model specification</li>
+            </ul>
+        </div>
+        
+        <h3>When to Use Firth Logistic Regression</h3>
+        <ul>
+            <li>Small sample sizes (n < 100)</li>
+            <li>Rare events or outcomes</li>
+            <li>Evidence of complete separation</li>
+            <li>Binary classification problems in medical research</li>
+            <li>When standard logistic regression produces infinite coefficients</li>
+        </ul>
+        
+        <h3>Interpretation Guide</h3>
+        <table>
+            <tr>
+                <th>Statistic</th>
+                <th>Interpretation</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Coefficient (β)</td>
+                <td>Log-odds change per unit increase</td>
+                <td>β=0.5 means log-odds increase by 0.5</td>
+            </tr>
+            <tr>
+                <td>Odds Ratio (OR)</td>
+                <td>exp(β) - relative odds of outcome</td>
+                <td>OR=2.0 means 2x increase in odds</td>
+            </tr>
+            <tr>
+                <td>95% CI</td>
+                <td>Range of plausible effect values</td>
+                <td>CI: 1.2-3.5 excludes null (OR=1)</td>
+            </tr>
+            <tr>
+                <td>p-value</td>
+                <td>Statistical significance (α=0.05)</td>
+                <td>p<0.05 indicates significant effect</td>
+            </tr>
+        </table>
+        
+        <!-- PROPENSITY SCORE MATCHING -->
+        <h2 id="psm">2. Propensity Score Matching (PSM)</h2>
+        
+        <div class="method-card">
+            <h3>Overview</h3>
+            <p>Propensity Score Matching is an observational study method that estimates the causal effect of a treatment by matching treated and control subjects with similar propensity scores (probability of treatment), creating balanced comparison groups.</p>
+        </div>
+        
+        <h3>Methodological Framework</h3>
+        <p>PSM operates in four steps:</p>
+        <ol>
+            <li><strong>Propensity Score Estimation:</strong> Estimate probability of treatment using logistic regression or other methods</li>
+            <li><strong>Common Support Region:</strong> Ensure overlap in propensity score distributions</li>
+            <li><strong>Matching Algorithm:</strong> Match treated and control units with similar scores</li>
+            <li><strong>Balance Assessment:</strong> Verify covariate balance after matching</li>
+        </ol>
+        
+        <h3>Propensity Score Definition</h3>
+        <div class="eq">
+            e(X) = P(Z=1|X) = probability of treatment given observed characteristics
+        </div>
+        
+        <h3>Matching Algorithms Available in MedStat</h3>
+        <table>
+            <tr>
+                <th>Algorithm</th>
+                <th>Description</th>
+                <th>Best For</th>
+            </tr>
+            <tr>
+                <td>1:1 Matching</td>
+                <td>Each treated unit matched to one control</td>
+                <td>Preserving sample size</td>
+            </tr>
+            <tr>
+                <td>1:2 Matching</td>
+                <td>Each treated matched to two controls</td>
+                <td>Increasing efficiency, smaller treated group</td>
+            </tr>
+            <tr>
+                <td>Caliper Matching</td>
+                <td>Match within specified distance threshold</td>
+                <td>Ensuring matching quality</td>
+            </tr>
+        </table>
+        
+        <h3>Key Advantages</h3>
+        <div class="pro-box">
+            <strong>✓ Reduces selection bias:</strong> Creates comparability between groups
+        </div>
+        <div class="pro-box">
+            <strong>✓ Causal inference:</strong> Enables estimation of causal effects in observational data
+        </div>
+        <div class="pro-box">
+            <strong>✓ Flexible:</strong> Works with various treatment definitions and outcomes
+        </div>
+        
+        <h3>Limitations</h3>
+        <div class="con-box">
+            <strong>✗ Hidden bias:</strong> Cannot account for unmeasured confounders
+        </div>
+        <div class="con-box">
+            <strong>✗ Common support:</strong> Units outside overlap region excluded
+        </div>
+        <div class="con-box">
+            <strong>✗ Model dependence:</strong> Results depend on propensity score model specification
+        </div>
+        
+        <h3>Assessing Covariate Balance</h3>
+        <p>After matching, evaluate balance using standardized differences:</p>
+        <div class="assumption-box">
+            <ul>
+                <li><strong>Standardized Difference < 0.1:</strong> Good balance</li>
+                <li><strong>0.1 - 0.2:</strong> Acceptable balance</li>
+                <li><strong>> 0.2:</strong> Poor balance - consider alternative matching approach</li>
+            </ul>
+        </div>
+        
+        <!-- KAPLAN-MEIER -->
+        <h2 id="kaplan">3. Kaplan-Meier Survival Analysis</h2>
+        
+        <div class="method-card">
+            <h3>Overview</h3>
+            <p>The Kaplan-Meier estimator is a non-parametric method for estimating survival probability over time. It accounts for censored observations (subjects lost to follow-up) and produces step-function survival curves.</p>
+        </div>
+        
+        <h3>Kaplan-Meier Estimator</h3>
+        <div class="eq">
+            S(t) = ∏ᵢ (1 - dᵢ/nᵢ) for all i where tᵢ ≤ t
+        </div>
+        <p>where dᵢ = number of events at time tᵢ, nᵢ = number at risk at time tᵢ</p>
+        
+        <h3>Key Characteristics</h3>
+        <ul>
+            <li>Non-parametric - makes no distributional assumptions</li>
+            <li>Accounts for censoring (incomplete follow-up)</li>
+            <li>Provides empirical survival function</li>
+            <li>Step-function decreases only at event times</li>
+        </ul>
+        
+        <h3>Kaplan-Meier Curve Elements</h3>
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>Y-axis</td>
+                <td>Cumulative survival probability (0-1)</td>
+            </tr>
+            <tr>
+                <td>X-axis</td>
+                <td>Follow-up time (days/months/years)</td>
+            </tr>
+            <tr>
+                <td>Vertical drop</td>
+                <td>Event (death/outcome) occurred</td>
+            </tr>
+            <tr>
+                <td>Small mark (+)</td>
+                <td>Censoring (subject lost to follow-up)</td>
+            </tr>
+        </table>
+        
+        <h3>When to Use Kaplan-Meier</h3>
+        <ul>
+            <li>Time-to-event data with censoring</li>
+            <li>Comparing survival between groups</li>
+            <li>Exploratory survival analysis</li>
+            <li>Visualizing survival distributions</li>
+        </ul>
+        
+        <h3>Median Survival Time</h3>
+        <p>The time at which 50% of subjects have experienced the event. Clinically meaningful for comparing group survival.</p>
+        
+        <!-- COX REGRESSION -->
+        <h2 id="cox">4. Cox Proportional Hazards Regression</h2>
+        
+        <div class="method-card">
+            <h3>Overview</h3>
+            <p>Cox Proportional Hazards Regression is a semi-parametric method for modeling the relationship between survival time and multiple covariates. It doesn't assume a specific survival distribution.</p>
+        </div>
+        
+        <h3>Cox Model Equation</h3>
+        <div class="eq">
+            h(t|X) = h₀(t) × exp(β₁X₁ + β₂X₂ + ... + βₚXₚ)
+        </div>
+        <p>where h₀(t) is the baseline hazard function (unspecified)</p>
+        
+        <h3>Key Assumptions</h3>
+        <div class="assumption-box">
+            <ul>
+                <li><strong>Proportional Hazards:</strong> Ratio of hazards between groups is constant over time</li>
+                <li>Independence of censoring</li>
+                <li>No unobserved confounding</li>
+                <li>Correct functional form of covariates</li>
+            </ul>
+        </div>
+        
+        <h3>Hazard Ratio Interpretation</h3>
+        <table>
+            <tr>
+                <th>HR Value</th>
+                <th>Interpretation</th>
+            </tr>
+            <tr>
+                <td>HR = 1.0</td>
+                <td>No effect - survival identical between groups</td>
+            </tr>
+            <tr>
+                <td>HR > 1.0</td>
+                <td>Increased hazard (higher mortality/event risk)</td>
+            </tr>
+            <tr>
+                <td>HR < 1.0</td>
+                <td>Decreased hazard (protective effect)</td>
+            </tr>
+            <tr>
+                <td>HR = 2.0</td>
+                <td>200% increase in hazard (2x higher event risk)</td>
+            </tr>
+            <tr>
+                <td>HR = 0.5</td>
+                <td>50% reduction in hazard (half the event risk)</td>
+            </tr>
+        </table>
+        
+        <h3>Model Diagnostics</h3>
+        <ul>
+            <li><strong>Concordance Index (C-index):</strong> Measures predictive accuracy (0.5-1.0)</li>
+            <li><strong>Proportional Hazards Test:</strong> Validate PH assumption</li>
+            <li><strong>Residuals Analysis:</strong> Check model fit and outliers</li>
+        </ul>
+        
+        <h3>Advantages and Limitations</h3>
+        <div class="pro-box">
+            <strong>✓ Semi-parametric:</strong> Flexible - doesn't require specifying survival distribution
+        </div>
+        <div class="pro-box">
+            <strong>✓ Multivariate analysis:</strong> Adjust for multiple covariates simultaneously
+        </div>
+        <div class="con-box">
+            <strong>✗ Proportional hazards assumption:</strong> May be violated in some datasets
+        </div>
+        
+        <h2 id="references">References and Further Reading</h2>
+        <ul>
+            <li>Firth, D. (1993). "Bias reduction of maximum likelihood estimates." Biometrika, 80(1), 27-38.</li>
+            <li>Rosenbaum, P. R., & Rubin, D. B. (1983). "The central role of the propensity score in observational studies." Biometrika, 70(1), 41-55.</li>
+            <li>Kaplan, E. L., & Meier, P. (1958). "Nonparametric estimation from incomplete observations." Journal of the American Statistical Association, 53(282), 457-481.</li>
+            <li>Cox, D. R. (1972). "Regression models and life-tables." Journal of the Royal Statistical Society, 34(2), 187-220.</li>
+        </ul>
+        
+        <div class="method-card">
+            <h3>Citation for Your Research</h3>
+            <p>If you use MedStat for published research, please include this citation in your methods section:</p>
+            <p><code>MedStat: Professional Medical Statistics Tool. Available at https://medstat.app</code></p>
+        </div>
+        
+        <a href="https://medstat.app" class="back-link">← Back to MedStat</a>
+        
+    </div>
+</body>
+</html>
