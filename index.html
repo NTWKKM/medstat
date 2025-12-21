@@ -182,44 +182,164 @@
 
     <!-- JSON-LD FAQPage Schema -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
         {
-          "@type": "Question",
-          "name": "What is Firth Logistic Regression?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Firth Logistic Regression is a statistical method that handles small sample sizes and complete separation in binary classification problems. It's particularly useful in medical research where sample sizes may be limited."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Propensity Score Matching (PSM)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Propensity Score Matching is a method to reduce selection bias in observational studies by matching treated and control subjects based on their propensity to receive treatment, improving causal inference."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is MedStat free to use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, MedStat is completely free to use. No registration or payment is required. Your data is processed in your browser and never stored on our servers."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What statistical methods does MedStat support?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "MedStat supports multiple advanced statistical methods including Firth Logistic Regression, Propensity Score Matching, Survival Analysis, Kaplan-Meier curves, and Cox Proportional Hazards Regression."
-          }
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Firth Logistic Regression?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Firth Logistic Regression is a statistical method that handles small sample sizes and complete separation in binary classification problems. It uses a penalized likelihood function with bias-correction, making it particularly useful in medical research where sample sizes may be limited or rare events occur. Unlike standard logistic regression, Firth adds a penalty term to reduce bias in parameter estimates, providing more reliable odds ratios and confidence intervals."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Propensity Score Matching (PSM)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Propensity Score Matching is a method to reduce selection bias in observational studies by matching treated and control subjects based on their propensity to receive treatment. This improves causal inference in non-randomized medical research by creating comparable groups, allowing better estimation of treatment effects even when randomization isn't possible."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is MedStat free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, MedStat is completely free to use. No registration, subscription fees, or payment is required. Your data is processed entirely in your browser and never stored on our servers, ensuring complete privacy and security for sensitive clinical data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What statistical methods does MedStat support?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MedStat supports multiple advanced statistical methods including Firth Logistic Regression for small samples, Propensity Score Matching for observational studies, Survival Analysis with Kaplan-Meier curves, Cox Proportional Hazards Regression for multivariate survival analysis, and additional biostatistics tools for clinical research."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Firth Logistic handle small sample sizes better than standard logistic regression?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Firth Logistic Regression adds a bias-correction penalty to the likelihood function, reducing bias in parameter estimates when sample sizes are small (typically n<100). This makes it superior for rare event data and when complete separation occurs (outcome perfectly predicts by a covariate), which is common in medical research with limited subjects or rare diseases."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "When should I use Propensity Score Matching instead of standard regression?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use PSM when you have observational data and want to reduce selection bias by creating comparable treatment and control groups. PSM is particularly useful when: you have many confounders, unequal group sizes, or you want to balance covariates before analysis. It improves causal inference by mimicking a randomized experiment structure in observational data."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a propensity score?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A propensity score is the predicted probability that a subject receives a treatment given their observed baseline characteristics. It summarizes multiple confounders into a single score, allowing you to match treated and control subjects with similar propensities. This matching reduces confounding by creating balanced groups where both treatment and control subjects have comparable baseline risk profiles."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I know if my propensity score matching is balanced?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Check covariate balance using standardized mean differences (SMD). Generally, SMD < 0.1 indicates good balance, while SMD < 0.05 indicates excellent balance. MedStat provides balance diagnostics showing which covariates are well-balanced and which may need adjustment or further analysis before proceeding with treatment effect estimation."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Kaplan-Meier survival analysis used for?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Kaplan-Meier analysis is a non-parametric method to estimate survival probability over time, properly handling censored data (subjects lost to follow-up or study completion). It's essential for clinical trials, cancer research, and any study with time-to-event outcomes like mortality, disease recurrence, or treatment failure. The method provides survival curves that show probability of surviving beyond specific time points."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "When should I use Cox regression for survival analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use Cox Proportional Hazards Regression when you need to assess multiple factors simultaneously while accounting for censoring. Unlike Kaplan-Meier which compares two groups, Cox regression provides hazard ratios for each variable and allows multivariate analysis of time-to-event data, making it essential for analyzing multiple treatments or confounders in medical research."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What are hazard ratios and how do I interpret them?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A hazard ratio (HR) compares the hazard (risk of event) between two groups. HR=1 means no difference, HR>1 means higher risk, HR<1 means lower risk. For example, HR=2 means the treatment group has twice the risk of the event compared to control. Confidence intervals determine statistical significance. HR=1.5 with 95% CI 1.2-1.8 means 50% higher risk, significantly different from no effect."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my data secure in MedStat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, MedStat is completely secure. All data processing happens in your browser using JavaScript—nothing is transmitted to or stored on our servers. This means you can analyze sensitive clinical data with complete privacy, making it ideal for HIPAA-regulated research, patient information, or confidential studies without security concerns."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I export my results from MedStat?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, MedStat allows you to export results in multiple formats including CSV, Excel, and PDF. You can easily share results with collaborators, include them in research papers, presentations, or reports. Export functionality preserves all statistical results, tables, and figures for seamless integration into your research workflow."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What sample size do I need for reliable statistical analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sample size depends on your method, effect size, and significance level. Generally, aim for n>30 for standard regression, but rare events or small effects require larger samples. Firth Logistic Regression can work with smaller samples (n>10-15) better than standard methods. Use power analysis calculators to determine required sample size based on your research question and expected effect size."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I handle missing data before analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MedStat requires complete case analysis (no missing values). Before uploading, clean your data by: removing rows with missing values, imputing means/medians for numeric data, using mode for categorical data, or applying multiple imputation methods depending on your missing data pattern. Proper data cleaning ensures valid statistical results and prevents biased estimates."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What do p-values mean in statistical analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A p-value is the probability of observing your results by chance if the null hypothesis is true. P<0.05 traditionally indicates statistical significance. However, p-values should be interpreted with effect sizes and confidence intervals, not as binary decisions. Consider clinical significance along with statistical significance—a result may be statistically significant but clinically trivial, or vice versa."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can MedStat be used for teaching biostatistics?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, MedStat is ideal for teaching biostatistics. It's free, requires no installation, allows students to immediately see results from statistical methods, and promotes understanding of advanced techniques like Firth regression and propensity score matching without requiring expensive software licenses or complex setups."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is MedStat open source?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, MedStat is open source and hosted on GitHub at https://github.com/NTWKKM/medstat. We welcome contributions from the research and statistics community. Review the code, report issues, submit features, or adapt it for your research needs. Community contributions help improve the tool for everyone."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What should I do if I get unexpected results from my analysis?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If results seem unexpected: (1) Verify data entry accuracy and format, (2) Check for missing or outlier values, (3) Ensure method selection matches your research question, (4) Review assumptions for your chosen method, (5) Consider consulting the documentation or method guides, (6) Report issues on GitHub if you suspect a bug. Most unexpected results come from data quality issues rather than software problems."
+              }
+            }
+          ]
         }
-      ]
-    }
     </script>
 
     <!-- Breadcrumb Schema -->
