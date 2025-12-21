@@ -2,10 +2,17 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>MedStat - Medical Statistics Tool</title>
     <meta name="description" content="Free Medical Statistics Tool for Researchers">
     
+    <meta property="og:title" content="MedStat - Medical Statistics Tool">
+    <meta property="og:description" content="โปรแกรมวิเคราะห์สถิติทางการแพทย์ฟรี สำหรับนักวิจัย">
+    <meta property="og:url" content="https://medstat.app">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
     <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
 
     <style>
@@ -14,27 +21,21 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* ป้องกันการ Scroll ซ้ำซ้อน */
+            overflow: hidden;
             background-color: #FFFFFF;
+            /* แก้ไขปัญหาการ Scroll บน iOS */
+            -webkit-overflow-scrolling: touch;
         }
         
         #app-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: none;
+            display: block;
             width: 100%;
             height: 100%;
-        }
-
-        /* สำหรับอุปกรณ์พกพา */
-        @media (max-width: 768px) {
-            #app-container {
-                height: 100vh;
-                width: 100vw;
-            }
+            border: none;
+            /* ใช้พื้นที่ทั้งหมดของหน้าจอ */
+            position: fixed;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
