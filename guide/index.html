@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>MedStat Guide | How to Use Medical Statistics Tool | Tutorial</title>
+    <meta name="description" content="Complete guide to using MedStat for medical statistics analysis. Learn how to perform Firth Logistic Regression, Propensity Score Matching, and Survival Analysis. Step-by-step tutorials for researchers.">
+    <meta name="keywords" content="MedStat guide, medical statistics tutorial, how to use MedStat, Firth Logistic tutorial, PSM guide, survival analysis tutorial, clinical statistics guide">
+    <meta name="author" content="MedStat Team">
+    
+    <meta name="canonical" href="https://medstat.app/guide">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://medstat.app/guide">
+    <meta property="og:title" content="MedStat Guide | How to Use Medical Statistics Tool">
+    <meta property="og:description" content="Complete tutorial guide for using MedStat medical statistics tool for clinical research analysis.">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="MedStat Guide | How to Use Medical Statistics Tool">
+    <meta property="twitter:description" content="Step-by-step tutorial for medical statistics analysis with MedStat.">
+    
+    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
+    <link rel="canonical" href="https://medstat.app/guide">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; background: white; min-height: 100vh; }
+        h1 { font-size: 2.5em; margin: 30px 0 20px; color: #1565c0; border-bottom: 3px solid #1565c0; padding-bottom: 10px; }
+        h2 { font-size: 2em; margin: 25px 0 15px; color: #1976d2; }
+        h3 { font-size: 1.5em; margin: 20px 0 10px; color: #1976d2; }
+        p { margin: 15px 0; text-align: justify; }
+        ul, ol { margin: 15px 0 15px 40px; }
+        li { margin: 10px 0; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; color: #c41c3b; }
+        .code-block { background: #f0f0f0; padding: 15px; border-left: 4px solid #1565c0; margin: 15px 0; overflow-x: auto; border-radius: 5px; }
+        a { color: #1565c0; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .nav { background: #f0f0f0; padding: 20px; border-radius: 5px; margin: 20px 0; }
+        .nav a { margin-right: 20px; }
+        .section-box { background: #e3f2fd; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #1565c0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #1565c0; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .breadcrumb { font-size: 0.9em; color: #666; margin: 20px 0; }
+        .back-link { display: inline-block; margin: 20px 0; padding: 10px 20px; background: #1565c0; color: white; border-radius: 5px; text-decoration: none; }
+        .back-link:hover { background: #0d47a1; }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "MedStat Guide | How to Use Medical Statistics Tool",
+      "description": "Complete guide to using MedStat for medical statistics analysis",
+      "image": "https://medstat.app/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MedStat Team"
+      },
+      "datePublished": "2025-12-21",
+      "dateModified": "2025-12-21"
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="https://medstat.app">Home</a> > Guide</div>
+        
+        <h1>MedStat Complete Guide: Getting Started with Medical Statistics</h1>
+        
+        <p>Welcome to the MedStat guide! This comprehensive tutorial will walk you through using MedStat for your medical statistics analysis. Whether you're new to statistical analysis or an experienced researcher, you'll find step-by-step instructions for each feature.</p>
+        
+        <div class="section-box">
+            <h3>Table of Contents</h3>
+            <ol>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#data-preparation">Data Preparation</a></li>
+                <li><a href="#firth-logistic">Firth Logistic Regression</a></li>
+                <li><a href="#psm">Propensity Score Matching</a></li>
+                <li><a href="#survival">Survival Analysis</a></li>
+                <li><a href="#results">Interpreting Results</a></li>
+                <li><a href="#export">Exporting Results</a></li>
+            </ol>
+        </div>
+        
+        <h2 id="getting-started">Getting Started with MedStat</h2>
+        <p>MedStat is a web-based tool designed for medical researchers and biostatisticians. No installation is required – simply access the tool from any modern web browser.</p>
+        
+        <h3>System Requirements</h3>
+        <ul>
+            <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+            <li>Stable internet connection</li>
+            <li>Data file in CSV or Excel format</li>
+            <li>No software installation needed</li>
+        </ul>
+        
+        <h3>Privacy and Security</h3>
+        <p>Your data is processed entirely in your browser using client-side computation. MedStat <strong>does not store, upload, or transmit your data</strong> to any server. Your medical data remains completely private and secure.</p>
+        
+        <h2 id="data-preparation">Preparing Your Data for Analysis</h2>
+        <p>Proper data preparation is crucial for accurate statistical analysis. Follow these guidelines to prepare your dataset:</p>
+        
+        <h3>Data Format Requirements</h3>
+        <ul>
+            <li><strong>File Format:</strong> CSV (.csv) or Excel (.xlsx)</li>
+            <li><strong>First Row:</strong> Should contain column headers (variable names)</li>
+            <li><strong>Data Type:</strong> Variables should be clearly labeled as numeric, categorical, or binary</li>
+            <li><strong>Missing Values:</strong> Use empty cells or "NA" for missing data</li>
+            <li><strong>Encoding:</strong> UTF-8 or ASCII recommended</li>
+        </ul>
+        
+        <h3>Variable Definition</h3>
+        <table>
+            <tr>
+                <th>Variable Type</th>
+                <th>Description</th>
+                <th>Examples</th>
+            </tr>
+            <tr>
+                <td>Outcome Variable</td>
+                <td>The result you're measuring (dependent variable)</td>
+                <td>Mortality (0/1), Disease status (yes/no)</td>
+            </tr>
+            <tr>
+                <td>Predictor Variables</td>
+                <td>Factors that may influence the outcome</td>
+                <td>Age, Gender, Treatment type</td>
+            </tr>
+            <tr>
+                <td>Confounders</td>
+                <td>Variables that may affect both exposure and outcome</td>
+                <td>Comorbidities, Baseline disease severity</td>
+            </tr>
+            <tr>
+                <td>Time Variable</td>
+                <td>For survival analysis only</td>
+                <td>Follow-up time (days/months)</td>
+            </tr>
+        </table>
+        
+        <h3>Data Quality Checklist</h3>
+        <ul>
+            <li>✓ All required variables are present in your dataset</li>
+            <li>✓ No typos or formatting inconsistencies in variable names</li>
+            <li>✓ Numeric variables are formatted as numbers (not text)</li>
+            <li>✓ Binary outcomes are coded as 0/1 or Yes/No</li>
+            <li>✓ Missing values are clearly marked</li>
+            <li>✓ Data ranges are realistic and within expected bounds</li>
+            <li>✓ Sample size is adequate for your analysis (n ≥ 30 recommended)</li>
+        </ul>
+        
+        <h2 id="firth-logistic">Firth Logistic Regression: Step-by-Step</h2>
+        <p>Firth Logistic Regression is a modified version of standard logistic regression that handles small sample sizes and complete separation better. It's ideal for medical studies with limited sample sizes.</p>
+        
+        <h3>When to Use Firth Logistic Regression</h3>
+        <ul>
+            <li>Binary outcome variables (yes/no, success/failure, diseased/healthy)</li>
+            <li>Small sample sizes (n < 100)</li>
+            <li>Rare outcomes or events</li>
+            <li>Complete separation in data (one group has 100% outcome)</li>
+            <li>Clinical trials with binary endpoints</li>
+        </ul>
+        
+        <h3>How to Perform Firth Logistic Regression in MedStat</h3>
+        <ol>
+            <li>Upload your data file (CSV or Excel)</li>
+            <li>Select "Firth Logistic Regression" from the analysis menu</li>
+            <li>Designate your outcome variable (binary: 0/1)</li>
+            <li>Select predictor variables (independent variables)</li>
+            <li>Optional: Include adjustment variables (confounders)</li>
+            <li>Click "Run Analysis"</li>
+        </ol>
+        
+        <h3>Interpreting Firth Logistic Results</h3>
+        <ul>
+            <li><strong>Coefficient (β):</strong> Direction and magnitude of effect</li>
+            <li><strong>Odds Ratio (OR):</strong> Relative odds of outcome for unit increase in predictor</li>
+            <li><strong>95% CI:</strong> Range where true effect likely lies</li>
+            <li><strong>p-value:</strong> Statistical significance (p < 0.05 is significant)</li>
+        </ul>
+        
+        <h2 id="psm">Propensity Score Matching: Complete Tutorial</h2>
+        <p>Propensity Score Matching (PSM) reduces bias in observational studies by creating comparable treatment and control groups. It's essential for non-randomized medical research.</p>
+        
+        <h3>Understanding Propensity Scores</h3>
+        <p>A propensity score is the predicted probability of receiving treatment based on observed baseline characteristics. In PSM, treated and control patients with similar propensity scores are matched, creating balanced comparison groups.</p>
+        
+        <h3>PSM Analysis Steps in MedStat</h3>
+        <ol>
+            <li>Upload your observational study data</li>
+            <li>Select "Propensity Score Matching" from the menu</li>
+            <li>Specify treatment variable (exposed/unexposed)</li>
+            <li>Select baseline characteristics to match on</li>
+            <li>Choose matching algorithm (1:1, 1:2, or caliper matching)</li>
+            <li>Execute analysis and review matching quality</li>
+            <li>Compare outcomes between matched groups</li>
+        </ol>
+        
+        <h3>Assessing Matching Quality</h3>
+        <p>After matching, always check covariate balance:</p>
+        <ul>
+            <li>Standardized difference should be < 0.1 for all variables</li>
+            <li>Distribution of propensity scores should overlap between groups</li>
+            <li>Sample size should be adequate after matching</li>
+        </ul>
+        
+        <h2 id="survival">Survival Analysis and Kaplan-Meier Curves</h2>
+        <p>Survival analysis examines time-to-event data, essential for oncology, cardiology, and epidemiology research.</p>
+        
+        <h3>Types of Survival Analysis in MedStat</h3>
+        <ul>
+            <li><strong>Kaplan-Meier Estimator:</strong> Non-parametric method for survival curves</li>
+            <li><strong>Cox Proportional Hazards Regression:</strong> Multivariate survival analysis</li>
+            <li><strong>Log-Rank Test:</strong> Compare survival between groups</li>
+        </ul>
+        
+        <h3>Data Requirements for Survival Analysis</h3>
+        <ul>
+            <li>Time variable (follow-up duration in days/months/years)</li>
+            <li>Event indicator (0 = censored, 1 = event occurred)</li>
+            <li>Grouping variable (optional, for stratified analysis)</li>
+            <li>Covariate data for Cox regression</li>
+        </ul>
+        
+        <h3>Kaplan-Meier Curve Interpretation</h3>
+        <ul>
+            <li>Y-axis: Probability of survival (0-1)</li>
+            <li>X-axis: Time from baseline</li>
+            <li>Vertical drops: Events occurred</li>
+            <li>Censoring marks: Patients lost to follow-up</li>
+        </ul>
+        
+        <h2 id="results">Interpreting Statistical Results</h2>
+        <p>Understanding your results is crucial for drawing valid conclusions from your analysis.</p>
+        
+        <h3>Key Statistical Concepts</h3>
+        <ul>
+            <li><strong>P-value:</strong> Probability of observing results if null hypothesis is true (α = 0.05)</li>
+            <li><strong>Confidence Interval:</strong> Range of plausible values for effect estimate</li>
+            <li><strong>Effect Size:</strong> Magnitude of the relationship (OR, HR, β)</li>
+            <li><strong>Model Fit:</strong> How well model explains observed data (R², AIC)</li>
+        </ul>
+        
+        <h2 id="export">Exporting and Sharing Your Results</h2>
+        <p>MedStat allows easy export of results for reporting and publications:</p>
+        
+        <h3>Export Options</h3>
+        <ul>
+            <li>Export tables as CSV or Excel</li>
+            <li>Download publication-ready figures (PNG, PDF)</li>
+            <li>Generate summary statistics</li>
+            <li>Create coefficient tables for manuscripts</li>
+        </ul>
+        
+        <h2>Best Practices for Medical Statistics</h2>
+        <ul>
+            <li>Always conduct descriptive analysis before inferential statistics</li>
+            <li>Check assumptions of your statistical test</li>
+            <li>Report confidence intervals alongside p-values</li>
+            <li>Account for multiple testing when appropriate</li>
+            <li>Handle missing data appropriately (never just delete)</li>
+            <li>Consult with a biostatistician for complex analyses</li>
+        </ul>
+        
+        <h2>Common Questions and Troubleshooting</h2>
+        <h3>Q: My analysis won't run. What should I do?</h3>
+        <p>A: Check that your data format is correct, variables are properly defined, and there are no unexpected characters in column headers.</p>
+        
+        <h3>Q: Is my data secure in MedStat?</h3>
+        <p>A: Yes! All computation happens in your browser. Your data is never sent to our servers.</p>
+        
+        <h3>Q: Can I use MedStat for my published research?</h3>
+        <p>A: Absolutely! Many researchers worldwide use MedStat for publications. Please cite our tool in methods section.</p>
+        
+        <h2>Additional Resources</h2>
+        <ul>
+            <li><a href="https://medstat.app/methods">Detailed Methods Documentation</a></li>
+            <li><a href="https://github.com/NTWKKM/medstat">Source Code on GitHub</a></li>
+            <li><a href="https://huggingface.co/spaces/ntwkkm/medstat">MedStat Application</a></li>
+        </ul>
+        
+        <div class="section-box">
+            <h3>Need Help?</h3>
+            <p>If you encounter any issues or have questions about using MedStat, please refer to our methods documentation or visit our GitHub repository for more information.</p>
+        </div>
+        
+        <a href="https://medstat.app" class="back-link">← Back to MedStat</a>
+        
+    </div>
+</body>
+</html>
