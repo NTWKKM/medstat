@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MedStat - Medical Statistics Tool</title>
+    <meta name="description" content="Free Medical Statistics Tool for Researchers">
+    
+    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* ป้องกันการ Scroll ซ้ำซ้อน */
+            background-color: #FFFFFF;
+        }
+        
+        #app-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* สำหรับอุปกรณ์พกพา */
+        @media (max-width: 768px) {
+            #app-container {
+                height: 100vh;
+                width: 100vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <iframe 
+        id="app-container"
+        src="https://ntwkkm-medstat.hf.space" 
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"
+    ></iframe>
+
+</body>
+</html>
