@@ -46,7 +46,38 @@
         .back-link { display: inline-block; margin: 20px 0; padding: 10px 20px; background: #1565c0; color: white; border-radius: 5px; text-decoration: none; }
         .back-link:hover { background: #0d47a1; }
     </style>
-    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "My analysis won't run. What should I do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check that your data format is correct (CSV/Excel), variables are properly defined, and there are no unexpected characters in column headers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data secure in MedStat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! All computation happens in your browser. Your data is never sent to our servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use MedStat for my published research?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! Many researchers worldwide use MedStat for publications. Please cite our tool in methods section."
+          }
+        }
+      ]
+    }
+    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
