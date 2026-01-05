@@ -40,9 +40,9 @@
     <meta name="msapplication-TileColor" content="#2196F3">
     <meta name="theme-color" content="#2196F3">
 
-    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
-    <link rel="apple-touch-icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
-
+    <link rel="icon" type="image/png" href="medstat-icon.png">
+    <link rel="apple-touch-icon" href="medstat-icon.png">
+    
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -72,6 +72,7 @@
             top: 0; 
             left: 0; 
             z-index: 2;
+            -webkit-overflow-scrolling: touch;
         }
         
         /* SEO Content - Hidden from visual display but visible to search engines */
@@ -476,8 +477,18 @@
         <p>Use MedStat immediately without registration. Upload your data and perform advanced statistical analyses in minutes. Perfect for quick prototyping, teaching, or full-scale research projects.</p>
         
         <p>For more information, visit our guide and methods documentation pages to learn more about each statistical technique and how to use MedStat effectively in your research.</p>
-    </div>
 
+        <h2>Chinese User Support (医学统计工具)</h2>
+        <p>MedStat is also optimized for Chinese researchers:</p>
+        <ul>
+            <li><strong>医学统计 (Medical Statistics):</strong> Free alternative to SPSS/SAS for Chinese medical students.</li>
+            <li><strong>样本量计算 (Sample Size):</strong> Calculate sample sizes for clinical trials easily.</li>
+            <li><strong>生存分析 (Survival Analysis):</strong> Kaplan-Meier and Cox Regression tools available online.</li>
+            <li><strong>Firth回归 (Firth Regression):</strong> Solve complete separation problems in rare event data.</li>
+        </ul>
+    
+    </div>
+        
     <iframe 
         id="app-container"
         src="https://ntwkkm-medstat.hf.space" 
