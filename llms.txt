@@ -1,0 +1,19 @@
+# MedStat: Medical Statistics Tool
+
+## Overview
+MedStat is a free, web-based professional medical statistics tool designed for clinical researchers. It performs client-side analysis ensuring complete data privacy.
+
+## Main Features
+- Firth Logistic Regression: For small samples/rare events.
+- Propensity Score Matching (PSM): For observational studies.
+- Survival Analysis: Kaplan-Meier and Cox Regression.
+- Privacy: Data never leaves the user's browser (Pyodide/WASM).
+
+## Site Structure
+- Main Tool: https://medstat.app/
+- User Guide: https://medstat.app/guide/
+- Statistical Methods Doc: https://medstat.app/methods/
+
+## Documentation
+For detailed statistical methodology (formulas, assumptions), refer to the /methods/ page.
+For step-by-step tutorials on using the interface, refer to the /guide/ page.
