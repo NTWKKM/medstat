@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propensity Score Matching (PSM) | Observational Study Analysis | MedStat</title>
+    <meta name="description" content="Guide to Propensity Score Matching (PSM) for reducing selection bias in observational studies. Learn about matching algorithms and balance diagnostics.">
+    <link rel="canonical" href="https://medstat.app/methods/propensity-score-matching">
+    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; margin: 0; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; background: white; min-height: 100vh; }
+        h1 { color: #1565c0; border-bottom: 2px solid #1565c0; padding-bottom: 10px; }
+        h2 { color: #1976d2; margin-top: 30px; }
+        .eq { background: #f8f9fa; padding: 15px; border-left: 4px solid #1565c0; font-family: 'Times New Roman', serif; margin: 20px 0; }
+        .box { padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .pro { background: #e8f5e9; border-left: 5px solid #4caf50; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; }
+        th { background: #1565c0; color: white; }
+        .breadcrumb { margin-bottom: 20px; color: #666; font-size: 0.9em; }
+        a { color: #1565c0; text-decoration: none; }
+        .cta-button { display: inline-block; background: #1565c0; color: white; padding: 12px 24px; border-radius: 5px; margin-top: 20px; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> > <a href="/methods/">Methods</a> > Propensity Score Matching
+        </div>
+
+        <h1>Propensity Score Matching (PSM)</h1>
+        <p><strong>Propensity Score Matching</strong> is a statistical technique used in observational studies to estimate the effect of a treatment, policy, or other intervention by accounting for covariates that predict receiving the treatment.</p>
+
+        <div class="box pro">
+            <h3>Key Benefit</h3>
+            <p>It mimics a Randomized Controlled Trial (RCT) by creating an artificial control group that is comparable to the treatment group across all observed characteristics.</p>
+        </div>
+
+        <h2>How It Works</h2>
+        <ol>
+            <li><strong>Calculate Propensity Score:</strong> Estimate the probability of receiving treatment for every subject (usually via logistic regression).</li>
+            <li><strong>Match Subjects:</strong> Pair treated subjects with untreated subjects who have similar propensity scores.</li>
+            <li><strong>Check Balance:</strong> Ensure that after matching, the characteristics of both groups are statistically similar.</li>
+            <li><strong>Estimate Effect:</strong> Compare the outcome between the matched groups.</li>
+        </ol>
+
+        <h2>Matching Algorithms</h2>
+        <table>
+            <tr>
+                <th>Method</th>
+                <th>Description</th>
+                <th>Best Use Case</th>
+            </tr>
+            <tr>
+                <td><strong>Nearest Neighbor</strong></td>
+                <td>Matches treated unit to the closest control unit.</td>
+                <td>General purpose, most common.</td>
+            </tr>
+            <tr>
+                <td><strong>Caliper Matching</strong></td>
+                <td>Matches only within a specific score distance (e.g., +/- 0.05).</td>
+                <td>When you need high precision matches.</td>
+            </tr>
+            <tr>
+                <td><strong>1:k Matching</strong></td>
+                <td>Matches one treated unit to k control units (e.g., 1:2).</td>
+                <td>When you have many controls to increase power.</td>
+            </tr>
+        </table>
+
+        <h2>Balance Diagnostics</h2>
+        <p>Before analyzing the outcome, you must check if matching worked. The gold standard is the <strong>Standardized Mean Difference (SMD)</strong>.</p>
+        <ul>
+            <li><strong>SMD < 0.1:</strong> Excellent balance.</li>
+            <li><strong>SMD < 0.2:</strong> Acceptable balance.</li>
+            <li><strong>SMD > 0.2:</strong> Imbalanced (Need to adjust model).</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <h3>Perform PSM Online</h3>
+            <p>Upload your data and perform Propensity Score Matching instantly.</p>
+            <a href="/" class="cta-button">Launch PSM Tool</a>
+        </div>
+    </div>
+</body>
+</html>
