@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as follows."
+authors:
+  - family-names: "MedStat Team"
+    given-names: ""
+title: "MedStat: Free Medical Statistics Tool for Firth Logistic and PSM"
+version: 1.0.0
+date-released: 2025-12-21
+url: "https://medstat.app"
+repository-code: "https://github.com/NTWKKM/medstat"
+keywords:
+  - "medical statistics"
+  - "firth logistic regression"
+  - "propensity score matching"
+  - "survival analysis"
+license: MIT
