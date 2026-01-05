@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Analysis Overview | Time-to-Event Analysis | MedStat</title>
+    <meta name="description" content="Introduction to Survival Analysis concepts: Censoring, Time-to-Event, Kaplan-Meier, and Cox Regression in medical research.">
+    <link rel="canonical" href="https://medstat.app/methods/survival-analysis">
+    <link rel="icon" href="https://huggingface.co/front/assets/huggingface_logo.svg">
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; margin: 0; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; background: white; min-height: 100vh; }
+        h1 { color: #1565c0; border-bottom: 2px solid #1565c0; padding-bottom: 10px; }
+        h2 { color: #1976d2; margin-top: 30px; }
+        .method-link { display: block; background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #1565c0; text-decoration: none; color: #333; transition: transform 0.2s; }
+        .method-link:hover { transform: translateX(5px); background: #bbdefb; }
+        .method-link h3 { margin: 0 0 10px 0; color: #1565c0; }
+        .breadcrumb { margin-bottom: 20px; color: #666; font-size: 0.9em; }
+        a { color: #1565c0; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> > <a href="/methods/">Methods</a> > Survival Analysis
+        </div>
+
+        <h1>Survival Analysis</h1>
+        <p><strong>Survival Analysis</strong> is a branch of statistics for analyzing the expected duration of time until one or more events happen, such as death in biological organisms and failure in mechanical systems.</p>
+
+        <h2>Core Concepts</h2>
+        <ul>
+            <li><strong>Time-to-Event:</strong> The duration from a defined starting point (e.g., surgery) to the event of interest (e.g., recurrence).</li>
+            <li><strong>Censoring:</strong> Occurs when we don't know the exact survival time of a subject (e.g., study ends, patient lost to follow-up). Survival analysis specifically handles this data instead of discarding it.</li>
+            <li><strong>Hazard Function:</strong> The instantaneous rate of occurrence of the event.</li>
+        </ul>
+
+        <h2>Choose Your Analysis Method</h2>
+        
+        <a href="/methods/kaplan-meier" class="method-link">
+            <h3>1. Kaplan-Meier Analysis →</h3>
+            <p>Non-parametric method used to estimate the survival function from lifetime data. Best for visualizing survival curves and comparing two groups (Log-rank test).</p>
+        </a>
+
+        <a href="/methods/cox-regression" class="method-link">
+            <h3>2. Cox Proportional Hazards Regression →</h3>
+            <p>Semi-parametric method used to investigate the effect of several variables (covariates) on the time a specified event takes to happen.</p>
+        </a>
+
+    </div>
+</body>
+</html>
