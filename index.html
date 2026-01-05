@@ -76,27 +76,31 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* Floating Info Button */
+        /* Adjusted Floating Info Button - Smaller & Subtle */
         .info-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #2196F3;
+            bottom: 15px;
+            right: 15px;
+            width: 25px;  /* Reduced size */
+            height: 25px; /* Reduced size */
+            background-color: rgba(33, 150, 243, 0.7); /* Slightly transparent */
             color: white;
             border-radius: 50%;
             border: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             z-index: 100;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 18px; /* Adjusted font size */
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s;
+            transition: all 0.2s ease-in-out;
         }
-        .info-btn:hover { transform: scale(1.1); }
+        .info-btn:hover { 
+            transform: scale(1.1); 
+            background-color: rgba(33, 150, 243, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
 
         /* Overlay "Page in Page" */
         #seoOverlay {
@@ -445,10 +449,10 @@
         loading="eager"
     ></iframe>
 
-    <button class="info-btn" onclick="openOverlay()">?</button>
+    <button class="info-btn" onclick="openOverlay()" aria-label="Open Statistics Guide">?</button>
 
     <div id="seoOverlay">
-        <button class="close-btn" onclick="closeOverlay()">&times;</button>
+        <button class="close-btn" onclick="closeOverlay()" aria-label="Close Guide">&times;</button>
         <div class="seo-content-container">
             <h1>MedStat: Free Alternative to SPSS, Stata, and GraphPad for Medical Research</h1>
             
